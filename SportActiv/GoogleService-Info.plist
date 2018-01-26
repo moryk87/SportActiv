@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>AD_UNIT_ID_FOR_BANNER_TEST</key>
+	<string>ca-app-pub-3940256099942544/2934735716</string>
+	<key>AD_UNIT_ID_FOR_INTERSTITIAL_TEST</key>
+	<string>ca-app-pub-3940256099942544/4411468910</string>
+	<key>CLIENT_ID</key>
+	<string>492202265860-sjqr9orn3nonkauc8t7m2kgjr9mcrqq5.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.492202265860-sjqr9orn3nonkauc8t7m2kgjr9mcrqq5</string>
+	<key>API_KEY</key>
+	<string>AIzaSyAXCBGb_955kItOYpMjIa_FOccvJq3zFGk</string>
+	<key>GCM_SENDER_ID</key>
+	<string>492202265860</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.JanMoravek.SportActiv</string>
+	<key>PROJECT_ID</key>
+	<string>sportactiv-6b078</string>
+	<key>STORAGE_BUCKET</key>
+	<string>sportactiv-6b078.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<true></true>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<false></false>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:492202265860:ios:6a23ff2acf7f05fd</string>
+	<key>DATABASE_URL</key>
+	<string>https://sportactiv-6b078.firebaseio.com</string>
+</dict>
+</plist>

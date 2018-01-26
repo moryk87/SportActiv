@@ -13,6 +13,11 @@
 		148826E0201901F300155A62 /* SportActiv.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 148826DE201901F300155A62 /* SportActiv.xcdatamodeld */; };
 		148826E2201901F300155A62 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 148826E1201901F300155A62 /* Assets.xcassets */; };
 		148826E5201901F300155A62 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 148826E3201901F300155A62 /* LaunchScreen.storyboard */; };
+		148826ED201A22BC00155A62 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 148826EC201A22BB00155A62 /* GoogleService-Info.plist */; };
+		148826F2201A376400155A62 /* ActivityLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 148826F1201A376400155A62 /* ActivityLabel.swift */; };
+		148826F4201A441B00155A62 /* Firebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 148826F3201A441B00155A62 /* Firebase.swift */; };
+		148826F6201A457500155A62 /* MyVar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 148826F5201A457500155A62 /* MyVar.swift */; };
+		D3C3E6BB1BA4B27EE4316890 /* Pods_SportActiv.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ACA9492F7D2E1DC7BB54C6BD /* Pods_SportActiv.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +29,13 @@
 		148826E1201901F300155A62 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		148826E4201901F300155A62 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		148826E6201901F300155A62 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		148826EC201A22BB00155A62 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		148826F1201A376400155A62 /* ActivityLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityLabel.swift; sourceTree = "<group>"; };
+		148826F3201A441B00155A62 /* Firebase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Firebase.swift; sourceTree = "<group>"; };
+		148826F5201A457500155A62 /* MyVar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyVar.swift; sourceTree = "<group>"; };
+		8E962AEE17AA139E5662842B /* Pods-SportActiv.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SportActiv.release.xcconfig"; path = "Pods/Target Support Files/Pods-SportActiv/Pods-SportActiv.release.xcconfig"; sourceTree = "<group>"; };
+		ACA9492F7D2E1DC7BB54C6BD /* Pods_SportActiv.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SportActiv.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B67110B74BE8AB9B53D6EA0F /* Pods-SportActiv.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SportActiv.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SportActiv/Pods-SportActiv.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,6 +43,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D3C3E6BB1BA4B27EE4316890 /* Pods_SportActiv.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -42,6 +55,8 @@
 			children = (
 				148826D6201901F300155A62 /* SportActiv */,
 				148826D5201901F300155A62 /* Products */,
+				270A5CAD794F4A57A5DA0718 /* Pods */,
+				B61F7CC596276F93CF5F9926 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -56,15 +71,60 @@
 		148826D6201901F300155A62 /* SportActiv */ = {
 			isa = PBXGroup;
 			children = (
-				148826D7201901F300155A62 /* AppDelegate.swift */,
-				148826D9201901F300155A62 /* ViewController.swift */,
-				148826DB201901F300155A62 /* Main.storyboard */,
+				148826F0201A36FC00155A62 /* Controller */,
+				148826EF201A36F500155A62 /* View */,
+				148826EE201A36EF00155A62 /* Model */,
 				148826E1201901F300155A62 /* Assets.xcassets */,
-				148826E3201901F300155A62 /* LaunchScreen.storyboard */,
 				148826E6201901F300155A62 /* Info.plist */,
+				148826EC201A22BB00155A62 /* GoogleService-Info.plist */,
 				148826DE201901F300155A62 /* SportActiv.xcdatamodeld */,
 			);
 			path = SportActiv;
+			sourceTree = "<group>";
+		};
+		148826EE201A36EF00155A62 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				148826F1201A376400155A62 /* ActivityLabel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		148826EF201A36F500155A62 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				148826DB201901F300155A62 /* Main.storyboard */,
+				148826E3201901F300155A62 /* LaunchScreen.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		148826F0201A36FC00155A62 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				148826D7201901F300155A62 /* AppDelegate.swift */,
+				148826D9201901F300155A62 /* ViewController.swift */,
+				148826F3201A441B00155A62 /* Firebase.swift */,
+				148826F5201A457500155A62 /* MyVar.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		270A5CAD794F4A57A5DA0718 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				B67110B74BE8AB9B53D6EA0F /* Pods-SportActiv.debug.xcconfig */,
+				8E962AEE17AA139E5662842B /* Pods-SportActiv.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		B61F7CC596276F93CF5F9926 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				ACA9492F7D2E1DC7BB54C6BD /* Pods_SportActiv.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -74,9 +134,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 148826E9201901F300155A62 /* Build configuration list for PBXNativeTarget "SportActiv" */;
 			buildPhases = (
+				03B3264807DBDB6C8797D136 /* [CP] Check Pods Manifest.lock */,
 				148826D0201901F300155A62 /* Sources */,
 				148826D1201901F300155A62 /* Frameworks */,
 				148826D2201901F300155A62 /* Resources */,
+				CB8ABC910C3E851E11F28AE5 /* [CP] Embed Pods Frameworks */,
+				BA30AF21B3CDACF4D5AA0FA5 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -127,6 +190,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				148826E5201901F300155A62 /* LaunchScreen.storyboard in Resources */,
+				148826ED201A22BC00155A62 /* GoogleService-Info.plist in Resources */,
 				148826E2201901F300155A62 /* Assets.xcassets in Resources */,
 				148826DD201901F300155A62 /* Main.storyboard in Resources */,
 			);
@@ -134,14 +198,83 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		03B3264807DBDB6C8797D136 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-SportActiv-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		BA30AF21B3CDACF4D5AA0FA5 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SportActiv/Pods-SportActiv-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		CB8ABC910C3E851E11F28AE5 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-SportActiv/Pods-SportActiv-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
+				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManagerSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SportActiv/Pods-SportActiv-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		148826D0201901F300155A62 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				148826F4201A441B00155A62 /* Firebase.swift in Sources */,
+				148826F6201A457500155A62 /* MyVar.swift in Sources */,
 				148826DA201901F300155A62 /* ViewController.swift in Sources */,
 				148826D8201901F300155A62 /* AppDelegate.swift in Sources */,
 				148826E0201901F300155A62 /* SportActiv.xcdatamodeld in Sources */,
+				148826F2201A376400155A62 /* ActivityLabel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -276,6 +409,7 @@
 		};
 		148826EA201901F300155A62 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B67110B74BE8AB9B53D6EA0F /* Pods-SportActiv.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -291,6 +425,7 @@
 		};
 		148826EB201901F300155A62 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8E962AEE17AA139E5662842B /* Pods-SportActiv.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
