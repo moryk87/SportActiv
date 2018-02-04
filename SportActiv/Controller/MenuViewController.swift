@@ -21,14 +21,6 @@ class MenuViewController: UIViewController {
         self.navigationItem.title = "menu"
         
         xHeight = (self.view.frame.height-64)/12
-//        let navBar: UINavigationBar = UINavigationBar(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: 44))
-//        let navItem = UINavigationItem(title: "sport activity diary")
-//        let doneItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.done, target: nil, action: #selector(getter: UIAccessibilityCustomAction.selector))
-//        
-//        navItem.rightBarButtonItem = doneItem
-//        navBar.barTintColor = UIColor.black
-//        navBar.setItems([navItem], animated: false)
-//        self.view.addSubview(navBar)
         
         confiFirstViewButton()
         configSecondViewButton()

@@ -47,11 +47,6 @@ class Firebase {
         myDatabase?.observe(.childAdded, with: { (snapshot) in
             
             let snapshotValue = snapshot.value as! Dictionary<String,String>
-            
-//            MyVar.onlineActivityArray.append(
-//                Activity(name: snapshotValue["name"]!, location: snapshotValue["location"]!, length: Float(snapshotValue["length"]!)!)
-//            )
-            
             let activity = Activity(context: self.context)
             
             activity.name = snapshotValue["name"]!
@@ -59,8 +54,6 @@ class Firebase {
             activity.length = Float(snapshotValue["length"]!)!
             
             MyVar.onlineActivityArray.append(activity)
-            
-            print(snapshot.key)
         })
     }
     

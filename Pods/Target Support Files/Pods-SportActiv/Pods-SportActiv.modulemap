@@ -1,0 +1,6 @@
+framework module Pods_SportActiv {
+  umbrella header "Pods-SportActiv-umbrella.h"
+
+  export *
+  module * { export * }
+}

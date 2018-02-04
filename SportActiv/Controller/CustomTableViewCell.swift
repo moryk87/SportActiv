@@ -25,8 +25,6 @@ class CustomTableViewCell: UITableViewCell {
         contentView.addSubview(locationLabelCell)
         contentView.addSubview(lengthLabelCell)
         
-//        contentView.backgroundColor = UIColor(red:0.94, green:0.94, blue:0.94, alpha:1.0)
-        
         let viewsDict = [
             "name" : nameLabelCell,
             "location" : locationLabelCell,

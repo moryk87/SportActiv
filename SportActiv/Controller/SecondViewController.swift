@@ -11,11 +11,14 @@ import MMDrawerController
 
 class SecondViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     let activityTable = UITableView()
     let switcher = UISegmentedControl(items: ["local", "online", "all"])
+    let zeroLabel = UILabel()
     let fvc = FirstViewController()
 
     var activityType: Int = 0
+    var empty: Bool = false
     
     var vcHeight:CGFloat = 0.0
     var vcWidth:CGFloat = 0.0
@@ -30,11 +33,12 @@ class SecondViewController: UIViewController, UITableViewDelegate, UITableViewDa
         vcWidth = self.view.frame.width
         xHeight = vcWidth/12
         
-        self.navigationItem.title = "sport activity records"
+        navigationItem.title = "sport activity records"
 
         configTable()
         configSegment()
         configBar()
+        configZeroLabel()
         
         activityTable.delegate = self
         activityTable.dataSource = self
@@ -42,11 +46,25 @@ class SecondViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     override func viewDidAppear(_ animated: Bool) {
         MyVar.mergedActivityArray = MyVar.localActivityArray
-//        MyVar.mergedActivityArray.append(MyVar.onlineActivityArray)
         MyVar.mergedActivityArray += MyVar.onlineActivityArray
-        print(MyVar.localActivityArray.count)
-        print(MyVar.mergedActivityArray.count)
-        
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        MyVar.localActivityArray.removeAll()
+        MyVar.onlineActivityArray.removeAll()
+        MyVar.mergedActivityArray.removeAll()
+        self.context.reset()
+    }
+    
+    func configZeroLabel() {
+        zeroLabel.frame = CGRect(x: 10, y: 2*vcHeight/50+xHeight+64, width: vcWidth-20, height: xHeight)
+        zeroLabel.text = "No records"
+        zeroLabel.font = UIFont(name: "System", size: 25)
+        zeroLabel.textColor = UIColor.black
+        zeroLabel.textAlignment = .center
+        zeroLabel.numberOfLines = 1
+        zeroLabel.isHidden = true
+        self.view.addSubview(zeroLabel)
     }
 
     func configTable() {
@@ -68,13 +86,12 @@ class SecondViewController: UIViewController, UITableViewDelegate, UITableViewDa
         switcher.layer.borderWidth = 1.0
         switcher.tintColor = UIColor.white
         switcher.addTarget(self, action:  #selector(self.switcher(_:)), for: .valueChanged)
-       
         self.view.addSubview(switcher)
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         var number: Int?
-
+        
         if activityType == 0 {
             number = MyVar.localActivityArray.count
         } else if activityType == 1 {
@@ -83,7 +100,10 @@ class SecondViewController: UIViewController, UITableViewDelegate, UITableViewDa
             number = MyVar.mergedActivityArray.count
         }
         
-        return number!
+        if number == 0 {
+            zeroLabel.isHidden = false
+        }
+        return number! 
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -98,13 +118,13 @@ class SecondViewController: UIViewController, UITableViewDelegate, UITableViewDa
             cell.locationLabelCell.text = MyVar.localActivityArray[indexPath.row].location
             cell.lengthLabelCell.text = String(MyVar.localActivityArray[indexPath.row].length)
             cell.backgroundColor = UIColor.red
-
+            
         } else if activityType == 1 {
             cell.nameLabelCell.text = MyVar.onlineActivityArray[indexPath.row].name
             cell.locationLabelCell.text = MyVar.onlineActivityArray[indexPath.row].location
             cell.lengthLabelCell.text = String(MyVar.onlineActivityArray[indexPath.row].length)
             cell.backgroundColor = UIColor.blue
-
+            
         } else if activityType == 2 {
             cell.nameLabelCell.text = MyVar.mergedActivityArray[indexPath.row].name
             cell.locationLabelCell.text = MyVar.mergedActivityArray[indexPath.row].location
@@ -114,13 +134,14 @@ class SecondViewController: UIViewController, UITableViewDelegate, UITableViewDa
             } else {
                 cell.backgroundColor = UIColor.blue
             }
-            
         }
 
         return cell
     }
 
     @objc func switcher(_ sender:UISegmentedControl) {
+        zeroLabel.isHidden = true
+        
         if sender.selectedSegmentIndex == 0 {
             activityType = sender.selectedSegmentIndex
             activityTable.reloadData()
