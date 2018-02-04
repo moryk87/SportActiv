@@ -9,6 +9,12 @@
 import Foundation
 
 struct MyVar {
-    static var activity: ActivityLabel = ActivityLabel ()
-    static var activityArray: [ActivityLabel] = [ActivityLabel] ()
+    static var name: String = ""
+    static var location: String = ""
+    static var length: Float = 0.0
+    
+    static var onlineActivityArray: [Activity] = [Activity] ()
+    static var localActivityArray: [Activity] = [Activity] ()
+    static var mergedActivityArray: [Activity] = [Activity] ()
 }
+

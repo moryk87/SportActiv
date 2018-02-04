@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  FirstViewController.swift
 //  SportActiv
 //
 //  Created by Jan Moravek on 24/01/2018.
@@ -7,22 +7,31 @@
 //
 
 import UIKit
+import CoreData
+import MMDrawerController
 
-class ViewController: UIViewController, UITextFieldDelegate {
+class FirstViewController: UIViewController, UITextFieldDelegate, FirebaseDelegate {
+
+    let firebase = Firebase()
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
-//    var activity: ActivityLabel = ActivityLabel ()
-    let firebase = Firebase ()
-    
-    var vHeight:CGFloat = 0.0
-    var vWidth:CGFloat = 0.0
+    var vcHeight:CGFloat = 0.0
+    var vcWidth:CGFloat = 0.0
     var xHeight:CGFloat = 0.0
+    
+    let nameTextField = UITextField()
+    let locationTextField = UITextField()
+    let lengthTextField = UITextField()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        vHeight = self.view.frame.height
-        vWidth = self.view.frame.width
-        xHeight = (vHeight-64)/12
+        view.backgroundColor = UIColor.white
+        
+        vcHeight = self.view.frame.height
+        vcWidth = self.view.frame.width
+        xHeight = (vcHeight-64)/12
         
         print(xHeight)
         
@@ -41,35 +50,63 @@ class ViewController: UIViewController, UITextFieldDelegate {
             }
         }
         
-        let navBar: UINavigationBar = UINavigationBar(frame: CGRect(x: 0, y: 0, width: vWidth, height: 44))
-        let navItem = UINavigationItem(title: "sport activity diary")
-//        let doneItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.done, target: nil, action: #selector(getter: UIAccessibilityCustomAction.selector))
-//        navItem.rightBarButtonItem = doneItem
-        navBar.setItems([navItem], animated: false)
-        self.view.addSubview(navBar)
+//        let navBar: UINavigationBar = UINavigationBar(frame: CGRect(x: 0, y: 0, width: vcWidth, height: 44))
+//        let navItem = UINavigationItem(title: "sport activity diary")
+        //        let doneItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.done, target: nil, action: #selector(getter: UIAccessibilityCustomAction.selector))
+        //
+        //        navItem.rightBarButtonItem = doneItem
+        //        navBar.barTintColor = UIColor.black
+        //        navBar.setItems([navItem], animated: false)
+        //        self.view.addSubview(navBar)
         
-        nameLabel()
-        nameTextField()
-        locationLabel()
-        locationTextField()
-        lengthLabel()
-        lengthTextField()
-        localButton()
-        onlineButton()
+//        let navItem = UINavigationItem(title: "sport activity diary")
+//        self.navigationItem.setItems([navItem], animated: false)
+        
+//        navigationBar.topItem.title = "some title"
+        
+        
+        
+        let button = UIButton(type: .custom)
+        button.setImage(UIImage(named: "menu"), for: .normal)
+//        let button = UIButton(type: .system)
+//        button.setTitle("MENU", for: .normal)
+//        button.tintColor = UIColor.black
+//        button.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
+        button.addTarget(self, action: #selector(menuButtonPressed), for: .touchUpInside)
+        let navItem = UIBarButtonItem(customView: button)
+
+        self.navigationItem.setRightBarButtonItems([navItem], animated: true)
+        self.navigationItem.title = "sport activity diary"
+//        self.navigationItem.
+        
+        print(FileManager.default.urls(for: .documentDirectory, in: .userDomainMask))
+        
+        configNameLabel()
+        configNameTextField()
+        configLocationLabel()
+        configLocationTextField()
+        configLengthLabel()
+        configLengthTextField()
+        configLocalButton()
+        configOnlineButton()
+        
+        retrieveLocaly()
         
         firebase.logIn()
+        firebase.retrieveOnline()
+        firebase.delegate = self
     }
     
-    override var preferredStatusBarStyle: UIStatusBarStyle {
-        return .lightContent
-    }
+//    override var preferredStatusBarStyle: UIStatusBarStyle {
+//        return .lightContent
+//    }
     
     
     //MARK: - labels/textFields/buttons
     /***************************************************************/
     
-    func nameLabel() {
-        let nameLabel = UILabel(frame: CGRect(x: vWidth/2 - 150, y: 1*xHeight+44, width: 300, height: xHeight))
+    func configNameLabel() {
+        let nameLabel = UILabel(frame: CGRect(x: vcWidth/2 - 150, y: 1*xHeight+44, width: 300, height: xHeight))
         nameLabel.text = "name of the sport activity:"
         nameLabel.font = UIFont(name: "System", size: 25)
         nameLabel.textColor = UIColor.black
@@ -79,8 +116,8 @@ class ViewController: UIViewController, UITextFieldDelegate {
         self.view.addSubview(nameLabel)
     }
     
-    func nameTextField() {
-        let nameTextField = UITextField(frame: CGRect(x: vWidth/2 - 125, y: 2*xHeight+44, width: 250, height: xHeight))
+    func configNameTextField() {
+        nameTextField.frame = CGRect(x: vcWidth/2 - 125, y: 2*xHeight+44, width: 250, height: xHeight)
         nameTextField.placeholder = "Enter name of the activity"
         nameTextField.font = UIFont(name: "System", size: 12)
         nameTextField.borderStyle = UITextBorderStyle.roundedRect
@@ -95,8 +132,8 @@ class ViewController: UIViewController, UITextFieldDelegate {
         self.view.addSubview(nameTextField)
     }
     
-    func locationLabel() {
-        let locationLabel = UILabel(frame: CGRect(x: vWidth/2 - 150, y: 4*xHeight+44, width: 300, height: xHeight))
+    func configLocationLabel() {
+        let locationLabel = UILabel(frame: CGRect(x: vcWidth/2 - 150, y: 4*xHeight+44, width: 300, height: xHeight))
         locationLabel.text = "location of the sport activity:"
         locationLabel.font = UIFont(name: "System", size: 25)
         locationLabel.textColor = UIColor.black
@@ -105,8 +142,8 @@ class ViewController: UIViewController, UITextFieldDelegate {
         self.view.addSubview(locationLabel)
     }
     
-    func locationTextField() {
-        let locationTextField = UITextField(frame: CGRect(x: vWidth/2 - 125, y: 5*xHeight+44, width: 250, height: xHeight))
+    func configLocationTextField() {
+        locationTextField.frame = CGRect(x: vcWidth/2 - 125, y: 5*xHeight+44, width: 250, height: xHeight)
         locationTextField.placeholder = "Enter location of the activity"
         locationTextField.font = UIFont(name: "System", size: 12)
         locationTextField.borderStyle = UITextBorderStyle.roundedRect
@@ -121,8 +158,8 @@ class ViewController: UIViewController, UITextFieldDelegate {
         self.view.addSubview(locationTextField)
     }
     
-    func lengthLabel() {
-        let lengthLabel = UILabel(frame: CGRect(x: vWidth/2 - 150, y: 7*xHeight+44, width: 300, height: xHeight))
+    func configLengthLabel() {
+        let lengthLabel = UILabel(frame: CGRect(x: vcWidth/2 - 150, y: 7*xHeight+44, width: 300, height: xHeight))
         lengthLabel.text = "length of the sport activity:"
         lengthLabel.font = UIFont(name: "System", size: 25)
         lengthLabel.textColor = UIColor.black
@@ -131,8 +168,8 @@ class ViewController: UIViewController, UITextFieldDelegate {
         self.view.addSubview(lengthLabel)
     }
     
-    func lengthTextField() {
-        let lengthTextField = UITextField(frame: CGRect(x: vWidth/2 - 125, y: 8*xHeight+44, width: 250, height: xHeight))
+    func configLengthTextField() {
+        lengthTextField.frame = CGRect(x: vcWidth/2 - 125, y: 8*xHeight+44, width: 250, height: xHeight)
         lengthTextField.placeholder = "Enter length of the activity"
         lengthTextField.font = UIFont(name: "System", size: 10)
         lengthTextField.borderStyle = UITextBorderStyle.roundedRect
@@ -148,8 +185,8 @@ class ViewController: UIViewController, UITextFieldDelegate {
     }
     
     
-    func localButton() {
-        let localButton: UIButton = UIButton(frame: CGRect(x: vWidth/2 - 120, y: 10*xHeight+44, width: 100, height: xHeight))
+    func configLocalButton() {
+        let localButton: UIButton = UIButton(frame: CGRect(x: vcWidth/2 - 120, y: 10*xHeight+44, width: 100, height: xHeight))
         localButton.backgroundColor = UIColor.black
         localButton.setTitle("Save Localy", for: .normal)
         localButton.titleLabel?.font = UIFont(name: "System", size: 15)
@@ -157,8 +194,8 @@ class ViewController: UIViewController, UITextFieldDelegate {
         self.view.addSubview(localButton)
     }
     
-    func onlineButton() {
-        let onlineButton: UIButton = UIButton(frame: CGRect(x: vWidth/2 + 20, y: 10*xHeight+44, width: 100, height: xHeight))
+    func configOnlineButton() {
+        let onlineButton: UIButton = UIButton(frame: CGRect(x: vcWidth/2 + 20, y: 10*xHeight+44, width: 100, height: xHeight))
         onlineButton.backgroundColor = UIColor.black
         onlineButton.setTitle("Save Online", for: .normal)
         onlineButton.titleLabel?.font = UIFont(name: "System", size: 15)
@@ -167,28 +204,107 @@ class ViewController: UIViewController, UITextFieldDelegate {
     }
     
     @objc func localButtonPressed() {
-        print("Local Button Clicked")
-        
+        saveLocaly()
     }
     
     @objc func onlineButtonPressed() {
-        print("OnLine Button Clicked")
-        firebase.uploadActivity ()
+        firebase.saveOnline()
     }
 
-    //MARK: - Firebase managing
+    
+    
+    //MARK: -
     /***************************************************************/
     
+    func saveLocaly() {
+//        let activity = Activity(name: MyVar.name, location: MyVar.location, length: MyVar.length)
+        let activity = Activity(context: context)
+
+        activity.name = MyVar.name
+        activity.location = MyVar.location
+        activity.length = MyVar.length
+        
+        do {
+            try context.save()
+            saveAlert(didSave: true)
+            clearTextField(clearText: true)
+            print("saveLocaly")
+        } catch {
+            print("Error saving content::: \(error)")
+        }
+    }
     
     
+    func retrieveLocaly () {
+        let request: NSFetchRequest<Activity> = Activity.fetchRequest()
+        
+        do {
+            MyVar.localActivityArray = try context.fetch(request)
+            print("fetch data")
+        } catch {
+            print("Error fetching data from context::: \(error)")
+        }
+    }
     
+//    func deleteA() {
+//        context.delete(MyVar.localActivityArray[indexPath.row])
+//        MyVar.localActivityArray.remove(at: indexPath.row)
+//    }
+    
+   
+    func saveAlert(didSave: Bool) {
+    
+        let blurEffect = UIBlurEffect(style: .light)
+        let blurVisualEffectView = UIVisualEffectView(effect: blurEffect)
+        blurVisualEffectView.frame = view.bounds
+        self.view.addSubview(blurVisualEffectView)
+        
+        let saveAlert = UIAlertController(title: "Saved", message: "Activity saved successfully", preferredStyle: UIAlertControllerStyle.alert)
+        
+        saveAlert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (action: UIAlertAction!) in blurVisualEffectView.removeFromSuperview()
+        }))
+        
+        present(saveAlert, animated: true, completion: nil)
+    }
+    
+    @objc func menuButtonPressed() {
+        print("pressed")
+        let appDelegate: AppDelegate = UIApplication.shared.delegate as! AppDelegate
+        appDelegate.centerContainer?.toggle(MMDrawerSide.right, animated: true, completion: nil)
+    }
+    
+    func clearTextField(clearText: Bool) {
+        nameTextField.text = ""
+        locationTextField.text = ""
+        lengthTextField.text = ""
+        print("clear")
+    }
+    
+    
+    //MARK: -
+    /***************************************************************/
+    
+//    func saveActivity() {
+//        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+//        let activity = Activity(context: context) // Link Task & Context
+//        activity.name = MyVar.activity.name
+////        activity.l
+////        activity.name
+//        
+//        // Save the data to coredata
+//        (UIApplication.shared.delegate as! AppDelegate).saveContext()
+//        
+////        let _ = navigationController?.popViewController(animated: true)
+//    }
+    
+   
     //MARK: - TextFieldValueChanged
     /***************************************************************/
 
     @objc func nameTextFieldValueChanged(_ sender: UITextField) {
         if let text = sender.text, !text.isEmpty
         {
-            MyVar.activity.name = sender.text!
+            MyVar.name = sender.text!
             print(sender.text!)
         }
     }
@@ -196,7 +312,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
     @objc func locationTextFieldValueChanged(_ sender: UITextField) {
         if let text = sender.text, !text.isEmpty
         {
-            MyVar.activity.location = sender.text!
+            MyVar.location = sender.text!
             print(sender.text!)
         }
     }
@@ -204,13 +320,10 @@ class ViewController: UIViewController, UITextFieldDelegate {
     @objc func lengthTextFieldValueChanged(_ sender: UITextField) {
         if let text = sender.text, !text.isEmpty
         {
-            MyVar.activity.length = Float(sender.text!)!
+            MyVar.length = Float(sender.text!)!
             print(sender.text!)
         }
     }
-
-    
-        
     
     override func willTransition(to newCollection: UITraitCollection, with coordinator: UIViewControllerTransitionCoordinator) {
         if UIDevice.current.orientation.isLandscape {
@@ -284,7 +397,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
 //MARK: - UITextFieldDelegate
 /***************************************************************/
 
-extension ViewController  {
+extension FirstViewController  {
     
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
         // return NO to disallow editing.
@@ -311,9 +424,9 @@ extension ViewController  {
     func textFieldDidEndEditing(_ textField: UITextField, reason: UITextFieldDidEndEditingReason) {
         // if implemented, called in place of textFieldDidEndEditing:
         print("TextField did end editing with reason method called")
-        print(MyVar.activity.name)
-        print(MyVar.activity.location)
-        print(MyVar.activity.length)
+        print(MyVar.name)
+        print(MyVar.location)
+        print(MyVar.length)
     }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
@@ -353,19 +466,19 @@ extension ViewController  {
 //    if nameField == "nameTextField" {
 //        let nameTextField = genericTextField
 //        //            let nameTextField = UITextField ()
-//        nameTextField.frame = CGRect(x: vWidth/2 - 125, y: 2*xHeight+44, width: 250, height: xHeight)
+//        nameTextField.frame = CGRect(x: vcWidth/2 - 125, y: 2*xHeight+44, width: 250, height: xHeight)
 //        nameTextField.addTarget(self, action: #selector(nameTextFieldValueChanged(_:)), for: .editingChanged)
 //        nameTextField.delegate = self
 //    } else if nameField == "locationTextField" {
 //        let locationTextField = genericTextField
 //        //            let locationTextField = UITextField ()
-//        locationTextField.frame = CGRect(x: vWidth/2 - 125, y: 5*xHeight+44, width: 250, height: xHeight)
+//        locationTextField.frame = CGRect(x: vcWidth/2 - 125, y: 5*xHeight+44, width: 250, height: xHeight)
 //        locationTextField.addTarget(self, action: #selector(locationTextFieldValueChanged(_:)), for: .editingChanged)
 //        locationTextField.delegate = self
 //    } else if nameField == "lengthTextField" {
 //        //            let lengthTextField = UITextField ()
 //        let lengthTextField = genericTextField
-//        lengthTextField.frame = CGRect(x: vWidth/2 - 125, y: 8*xHeight+44, width: 250, height: xHeight)
+//        lengthTextField.frame = CGRect(x: vcWidth/2 - 125, y: 8*xHeight+44, width: 250, height: xHeight)
 //        lengthTextField.addTarget(self, action: #selector(lengthTextFieldValueChanged(_:)), for: .editingChanged)
 //        lengthTextField.delegate = self
 //        self.view.addSubview(lengthTextField)

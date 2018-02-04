@@ -8,22 +8,25 @@
 
 /* Begin PBXBuildFile section */
 		148826D8201901F300155A62 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 148826D7201901F300155A62 /* AppDelegate.swift */; };
-		148826DA201901F300155A62 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 148826D9201901F300155A62 /* ViewController.swift */; };
+		148826DA201901F300155A62 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 148826D9201901F300155A62 /* FirstViewController.swift */; };
 		148826DD201901F300155A62 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 148826DB201901F300155A62 /* Main.storyboard */; };
-		148826E0201901F300155A62 /* SportActiv.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 148826DE201901F300155A62 /* SportActiv.xcdatamodeld */; };
+		148826E0201901F300155A62 /* DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 148826DE201901F300155A62 /* DataModel.xcdatamodeld */; };
 		148826E2201901F300155A62 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 148826E1201901F300155A62 /* Assets.xcassets */; };
 		148826E5201901F300155A62 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 148826E3201901F300155A62 /* LaunchScreen.storyboard */; };
 		148826ED201A22BC00155A62 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 148826EC201A22BB00155A62 /* GoogleService-Info.plist */; };
 		148826F2201A376400155A62 /* ActivityLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 148826F1201A376400155A62 /* ActivityLabel.swift */; };
 		148826F4201A441B00155A62 /* Firebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 148826F3201A441B00155A62 /* Firebase.swift */; };
 		148826F6201A457500155A62 /* MyVar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 148826F5201A457500155A62 /* MyVar.swift */; };
+		14AA922620211A4800F5AE8A /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14AA922520211A4800F5AE8A /* SecondViewController.swift */; };
+		14AA9228202126E800F5AE8A /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14AA9227202126E800F5AE8A /* CustomTableViewCell.swift */; };
+		14AA922C202284DE00F5AE8A /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14AA922B202284DE00F5AE8A /* MenuViewController.swift */; };
 		D3C3E6BB1BA4B27EE4316890 /* Pods_SportActiv.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ACA9492F7D2E1DC7BB54C6BD /* Pods_SportActiv.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		148826D4201901F300155A62 /* SportActiv.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SportActiv.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		148826D7201901F300155A62 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		148826D9201901F300155A62 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		148826D9201901F300155A62 /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
 		148826DC201901F300155A62 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		148826DF201901F300155A62 /* SportActiv.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SportActiv.xcdatamodel; sourceTree = "<group>"; };
 		148826E1201901F300155A62 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -33,6 +36,9 @@
 		148826F1201A376400155A62 /* ActivityLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityLabel.swift; sourceTree = "<group>"; };
 		148826F3201A441B00155A62 /* Firebase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Firebase.swift; sourceTree = "<group>"; };
 		148826F5201A457500155A62 /* MyVar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyVar.swift; sourceTree = "<group>"; };
+		14AA922520211A4800F5AE8A /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
+		14AA9227202126E800F5AE8A /* CustomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
+		14AA922B202284DE00F5AE8A /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		8E962AEE17AA139E5662842B /* Pods-SportActiv.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SportActiv.release.xcconfig"; path = "Pods/Target Support Files/Pods-SportActiv/Pods-SportActiv.release.xcconfig"; sourceTree = "<group>"; };
 		ACA9492F7D2E1DC7BB54C6BD /* Pods_SportActiv.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SportActiv.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B67110B74BE8AB9B53D6EA0F /* Pods-SportActiv.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SportActiv.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SportActiv/Pods-SportActiv.debug.xcconfig"; sourceTree = "<group>"; };
@@ -71,13 +77,12 @@
 		148826D6201901F300155A62 /* SportActiv */ = {
 			isa = PBXGroup;
 			children = (
+				148826D7201901F300155A62 /* AppDelegate.swift */,
 				148826F0201A36FC00155A62 /* Controller */,
 				148826EF201A36F500155A62 /* View */,
 				148826EE201A36EF00155A62 /* Model */,
-				148826E1201901F300155A62 /* Assets.xcassets */,
 				148826E6201901F300155A62 /* Info.plist */,
-				148826EC201A22BB00155A62 /* GoogleService-Info.plist */,
-				148826DE201901F300155A62 /* SportActiv.xcdatamodeld */,
+				14AA92242020B4FA00F5AE8A /* Supporting Files */,
 			);
 			path = SportActiv;
 			sourceTree = "<group>";
@@ -86,6 +91,7 @@
 			isa = PBXGroup;
 			children = (
 				148826F1201A376400155A62 /* ActivityLabel.swift */,
+				148826DE201901F300155A62 /* DataModel.xcdatamodeld */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -102,12 +108,23 @@
 		148826F0201A36FC00155A62 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				148826D7201901F300155A62 /* AppDelegate.swift */,
-				148826D9201901F300155A62 /* ViewController.swift */,
+				148826D9201901F300155A62 /* FirstViewController.swift */,
+				14AA922520211A4800F5AE8A /* SecondViewController.swift */,
+				14AA922B202284DE00F5AE8A /* MenuViewController.swift */,
+				14AA9227202126E800F5AE8A /* CustomTableViewCell.swift */,
 				148826F3201A441B00155A62 /* Firebase.swift */,
 				148826F5201A457500155A62 /* MyVar.swift */,
 			);
 			path = Controller;
+			sourceTree = "<group>";
+		};
+		14AA92242020B4FA00F5AE8A /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				148826E1201901F300155A62 /* Assets.xcassets */,
+				148826EC201A22BB00155A62 /* GoogleService-Info.plist */,
+			);
+			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
 		270A5CAD794F4A57A5DA0718 /* Pods */ = {
@@ -243,6 +260,7 @@
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
 				"${BUILT_PRODUCTS_DIR}/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/MMDrawerController/MMDrawerController.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
@@ -253,6 +271,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManagerSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MMDrawerController.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
@@ -271,9 +290,12 @@
 			files = (
 				148826F4201A441B00155A62 /* Firebase.swift in Sources */,
 				148826F6201A457500155A62 /* MyVar.swift in Sources */,
-				148826DA201901F300155A62 /* ViewController.swift in Sources */,
+				14AA9228202126E800F5AE8A /* CustomTableViewCell.swift in Sources */,
+				148826DA201901F300155A62 /* FirstViewController.swift in Sources */,
 				148826D8201901F300155A62 /* AppDelegate.swift in Sources */,
-				148826E0201901F300155A62 /* SportActiv.xcdatamodeld in Sources */,
+				14AA922620211A4800F5AE8A /* SecondViewController.swift in Sources */,
+				14AA922C202284DE00F5AE8A /* MenuViewController.swift in Sources */,
+				148826E0201901F300155A62 /* DataModel.xcdatamodeld in Sources */,
 				148826F2201A376400155A62 /* ActivityLabel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -463,13 +485,13 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		148826DE201901F300155A62 /* SportActiv.xcdatamodeld */ = {
+		148826DE201901F300155A62 /* DataModel.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
 				148826DF201901F300155A62 /* SportActiv.xcdatamodel */,
 			);
 			currentVersion = 148826DF201901F300155A62 /* SportActiv.xcdatamodel */;
-			path = SportActiv.xcdatamodeld;
+			path = DataModel.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};

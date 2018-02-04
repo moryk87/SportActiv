@@ -10,24 +10,88 @@ import UIKit
 import CoreData
 import Firebase
 import IQKeyboardManagerSwift
+import MMDrawerController
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    var centerContainer: MMDrawerController?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
-        UINavigationBar.appearance().barTintColor = UIColor.black
-        UINavigationBar.appearance().tintColor = UIColor.white
-        UINavigationBar.appearance().titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white]
-        UINavigationBar.appearance().setTitleVerticalPositionAdjustment(+10, for: .default)
+//        let viewController = ViewController(nibName: nil, bundle: nil) //ViewController = Name of your controller
+//        let navigationController = UINavigationController(rootViewController: viewController)
+//
+//        self.window = UIWindow(frame: UIScreen.main.bounds)
+//        self.window?.rootViewController = navigationController
+//        self.window?.makeKeyAndVisible()
+
+        
+//        var rootViewController = self.window!.rootViewController
+//
+//        let mainStoryBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        
+        let centerViewController = FirstViewController(nibName: nil, bundle: nil)
+        let rightViewController = MenuViewController(nibName: nil, bundle: nil)
+        
+        let centerSideBar = UINavigationController(rootViewController: centerViewController)
+        let rightSideBar = UINavigationController(rootViewController: rightViewController)
+        
+        centerContainer =  MMDrawerController(center: centerSideBar, rightDrawerViewController: rightSideBar)
+        
+        centerContainer?.openDrawerGestureModeMask = MMOpenDrawerGestureMode.panningCenterView
+        centerContainer?.closeDrawerGestureModeMask = MMCloseDrawerGestureMode.panningCenterView
+        
+        self.window?.rootViewController = centerContainer
+        self.window?.makeKeyAndVisible()
+        
+//        centerSideBar.navigationBar.isTranslucent = false
+//        centerSideBar.navigationBar.barTintColor = UIColor.black
+        
+//        centerSideBar.navigationBar.barTintColor = UIColor.black
+//        centerSideBar.navigationBar.tintColor = UIColor.white
+//
+//
+//        let btnDone = UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(dismissNav))
+//        navigationController.topViewController?.navigationItem.rightBarButtonItem = btnDone
+//        
+//        func dismissNav() {
+//            viewController.dismiss(animated: true, completion: nil)
+//        }
+//        
+//        
+//        
+////        let nav1 = UINavigationController()
+////        let mainView = ViewController(nibName: nil, bundle: nil) //ViewController = Name of your controller
+////        nav1.viewControllers = [mainView]
+////        self.window = UIWindow(frame: UIScreen.main.bounds)
+////        self.window!.rootViewController = nav1
+////        self.window?.makeKeyAndVisible()
+////        
+//        UINavigationBar.appearance().barTintColor = UIColor.black
+//        UINavigationBar.appearance().tintColor = UIColor.white
+//        UINavigationBar.appearance().titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white]
+//        UINavigationBar.appearance().setTitleVerticalPositionAdjustment(+10, for: .default)
         
         FirebaseApp.configure()
         
         IQKeyboardManager.sharedManager().enable = true
         IQKeyboardManager.sharedManager().shouldShowToolbarPlaceholder = false
         
+//        self.drawerController = [[MMDrawerController alloc]
+//            initWithCenterViewController:[self.storyboard instantiateViewControllerWithIdentifier:@"centerNav"]
+//            leftDrawerViewController:[self.storyboard instantiateViewControllerWithIdentifier:@"menu"]
+//            rightDrawerViewController:nil];
+//
+//        UIViewController * leftDrawer = [[UIViewController alloc] init];
+//        UIViewController * center = [[UIViewController alloc] init];
+//        UIViewController * rightDrawer = [[UIViewController alloc] init];
+//
+//        MMDrawerController * drawerController = [[MMDrawerController alloc]
+//        initWithCenterViewController:center
+//        leftDrawerViewController:leftDrawer
+//        rightDrawerViewController:rightDrawer];
         
         return true
     }
@@ -65,7 +129,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
          application to it. This property is optional since there are legitimate
          error conditions that could cause the creation of the store to fail.
         */
-        let container = NSPersistentContainer(name: "SportActiv")
+        let container = NSPersistentContainer(name: "DataModel")
         container.loadPersistentStores(completionHandler: { (storeDescription, error) in
             if let error = error as NSError? {
                 // Replace this implementation with code to handle the error appropriately.
