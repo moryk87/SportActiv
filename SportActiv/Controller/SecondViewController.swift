@@ -13,7 +13,7 @@ class SecondViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     let activityTable = UITableView()
-    let switcher = UISegmentedControl(items: ["local", "online", "all"])
+    let switcher = UISegmentedControl(items: ["local","online","all"])
     let zeroLabel = UILabel()
     let fvc = FirstViewController()
 
@@ -42,18 +42,6 @@ class SecondViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
         activityTable.delegate = self
         activityTable.dataSource = self
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        MyVar.mergedActivityArray = MyVar.localActivityArray
-        MyVar.mergedActivityArray += MyVar.onlineActivityArray
-    }
-    
-    override func viewDidDisappear(_ animated: Bool) {
-        MyVar.localActivityArray.removeAll()
-        MyVar.onlineActivityArray.removeAll()
-        MyVar.mergedActivityArray.removeAll()
-        self.context.reset()
     }
     
     func configZeroLabel() {
@@ -97,7 +85,7 @@ class SecondViewController: UIViewController, UITableViewDelegate, UITableViewDa
         } else if activityType == 1 {
             number = MyVar.onlineActivityArray.count
         } else if activityType == 2 {
-            number = MyVar.mergedActivityArray.count
+            number = MyVar.localActivityArray.count + MyVar.onlineActivityArray.count
         }
         
         if number == 0 {
@@ -126,12 +114,16 @@ class SecondViewController: UIViewController, UITableViewDelegate, UITableViewDa
             cell.backgroundColor = UIColor.blue
             
         } else if activityType == 2 {
-            cell.nameLabelCell.text = MyVar.mergedActivityArray[indexPath.row].name
-            cell.locationLabelCell.text = MyVar.mergedActivityArray[indexPath.row].location
-            cell.lengthLabelCell.text = String(MyVar.mergedActivityArray[indexPath.row].length)
+            
             if indexPath.row <= MyVar.localActivityArray.count-1 {
+                cell.nameLabelCell.text = MyVar.localActivityArray[indexPath.row].name
+                cell.locationLabelCell.text = MyVar.localActivityArray[indexPath.row].location
+                cell.lengthLabelCell.text = String(MyVar.localActivityArray[indexPath.row].length)
                 cell.backgroundColor = UIColor.red
             } else {
+                cell.nameLabelCell.text = MyVar.onlineActivityArray[indexPath.row-MyVar.localActivityArray.count].name
+                cell.locationLabelCell.text = MyVar.onlineActivityArray[indexPath.row-MyVar.localActivityArray.count].location
+                cell.lengthLabelCell.text = String(MyVar.onlineActivityArray[indexPath.row-MyVar.localActivityArray.count].length)
                 cell.backgroundColor = UIColor.blue
             }
         }
@@ -159,10 +151,10 @@ class SecondViewController: UIViewController, UITableViewDelegate, UITableViewDa
         button.setImage(UIImage(named: "menu"), for: .normal)
         button.addTarget(self, action: #selector(menuButtonPressed), for: .touchUpInside)
         let navItem = UIBarButtonItem(customView: button)
-        
+
         self.navigationItem.setRightBarButtonItems([navItem], animated: true)
     }
-    
+
     @objc func menuButtonPressed() {
         let appDelegate: AppDelegate = UIApplication.shared.delegate as! AppDelegate
         appDelegate.centerContainer?.toggle(MMDrawerSide.right, animated: true, completion: nil)

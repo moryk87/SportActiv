@@ -58,6 +58,10 @@ class FirstViewController: UIViewController, UITextFieldDelegate, FirebaseDelega
         firebase.delegate = self
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        MyVar.onlineActivityArray.removeAll()
+    }
+    
     
     //MARK: - labels/textFields/buttons
     /***************************************************************/
@@ -176,6 +180,7 @@ class FirstViewController: UIViewController, UITextFieldDelegate, FirebaseDelega
             try context.save()
             saveAlert(didSave: true)
             clearTextField(clearText: true)
+            retrieveLocaly()
         } catch {
             print("Error saving content::: \(error)")
         }

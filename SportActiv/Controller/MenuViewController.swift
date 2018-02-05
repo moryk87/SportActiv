@@ -45,24 +45,22 @@ class MenuViewController: UIViewController {
     }
 
     @objc func firstViewButtonPressed() {
-        
         let firstVC = FirstViewController(nibName: nil, bundle: nil)
         let firstNC = UINavigationController(rootViewController: firstVC)
         let appDelegate: AppDelegate = UIApplication.shared.delegate as! AppDelegate
-        
+
         appDelegate.centerContainer?.centerViewController = firstNC
         appDelegate.centerContainer?.toggle(MMDrawerSide.right, animated: true, completion: nil)
     }
     
     @objc func secondViewButtonPressed() {
-        
         let secondVC = SecondViewController(nibName: nil, bundle: nil)
         let secondNC = UINavigationController(rootViewController: secondVC)
         let appDelegate: AppDelegate = UIApplication.shared.delegate as! AppDelegate
-        
+
         appDelegate.centerContainer?.centerViewController = secondNC
         appDelegate.centerContainer?.toggle(MMDrawerSide.right, animated: true, completion: nil)
     }
 
-
+    
 }

@@ -8,7 +8,6 @@
 
 import Foundation
 import Firebase
-import CoreData
 
 protocol FirebaseDelegate {
     func saveAlert(didSave: Bool)
@@ -17,7 +16,6 @@ protocol FirebaseDelegate {
 
 class Firebase {
     
-    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     var myDatabase: DatabaseReference?
     var delegate: FirebaseDelegate?
     
@@ -34,7 +32,6 @@ class Firebase {
             if error != nil {
                 print(error!)
             } else {
-                print("saved successfully")
                 self.delegate?.saveAlert(didSave: true)
                 self.delegate?.clearTextField(clearText: true)
             }
@@ -47,13 +44,10 @@ class Firebase {
         myDatabase?.observe(.childAdded, with: { (snapshot) in
             
             let snapshotValue = snapshot.value as! Dictionary<String,String>
-            let activity = Activity(context: self.context)
             
-            activity.name = snapshotValue["name"]!
-            activity.location = snapshotValue["location"]!
-            activity.length = Float(snapshotValue["length"]!)!
-            
-            MyVar.onlineActivityArray.append(activity)
+            MyVar.onlineActivityArray.append(
+                ActivityLabel(name: snapshotValue["name"]!, location: snapshotValue["location"]!, length: Float(snapshotValue["length"]!)!)
+            )
         })
     }
     
@@ -66,5 +60,6 @@ class Firebase {
             }
         }
     }
+   
     
 }

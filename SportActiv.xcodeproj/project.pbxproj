@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		144B504A20288C3E0026B776 /* ActivityLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 144B504920288C3E0026B776 /* ActivityLabel.swift */; };
 		148826D8201901F300155A62 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 148826D7201901F300155A62 /* AppDelegate.swift */; };
 		148826DA201901F300155A62 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 148826D9201901F300155A62 /* FirstViewController.swift */; };
 		148826DD201901F300155A62 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 148826DB201901F300155A62 /* Main.storyboard */; };
@@ -23,6 +24,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		144B504920288C3E0026B776 /* ActivityLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityLabel.swift; sourceTree = "<group>"; };
 		148826D4201901F300155A62 /* SportActiv.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SportActiv.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		148826D7201901F300155A62 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		148826D9201901F300155A62 /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
@@ -88,6 +90,7 @@
 		148826EE201A36EF00155A62 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				144B504920288C3E0026B776 /* ActivityLabel.swift */,
 				148826DE201901F300155A62 /* DataModel.xcdatamodeld */,
 			);
 			path = Model;
@@ -289,6 +292,7 @@
 				148826F6201A457500155A62 /* MyVar.swift in Sources */,
 				14AA9228202126E800F5AE8A /* CustomTableViewCell.swift in Sources */,
 				148826DA201901F300155A62 /* FirstViewController.swift in Sources */,
+				144B504A20288C3E0026B776 /* ActivityLabel.swift in Sources */,
 				148826D8201901F300155A62 /* AppDelegate.swift in Sources */,
 				14AA922620211A4800F5AE8A /* SecondViewController.swift in Sources */,
 				14AA922C202284DE00F5AE8A /* MenuViewController.swift in Sources */,

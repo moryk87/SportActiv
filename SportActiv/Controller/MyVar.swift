@@ -13,8 +13,7 @@ struct MyVar {
     static var location: String = ""
     static var length: Float = 0.0
     
-    static var onlineActivityArray: [Activity] = [Activity] ()
+    static var onlineActivityArray: [ActivityLabel] = [ActivityLabel] ()
     static var localActivityArray: [Activity] = [Activity] ()
-    static var mergedActivityArray: [Activity] = [Activity] ()
 }
 
